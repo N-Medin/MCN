@@ -50,3 +50,17 @@ BEGIN
 			FROM Inserted
 END
 GO
+
+DECLARE @Reparadores uniqueidentifier
+SET @Reparadores = (SELECT ID
+FROM Reparadores
+WHERE Nombre = 'Carlos')
+
+INSERT INTO EnReparacion
+(ID,Nombre,F_Inicio,F_Final,Reparadores_ID)
+VALUES
+(NEWID(),'Gui Espanola', '2019-03-03', '2019-04-04',@Reparadores)
+GO
+
+SELECT * FROM EnReparacion
+GO
